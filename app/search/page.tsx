@@ -2,6 +2,7 @@
 import { useState } from "react";
 import searchPodcast from "../api/searchPodcast"
 import Link from "next/link";
+import Image from "next/image";
 
 interface Podcast {
     uuid: string;
@@ -66,7 +67,7 @@ export default function Search() {
                         podcasts.map((podcast) => (
                             <div className="card card-compact m-2" key={podcast.uuid}>
                                 <div className="card border-4 border-slate-600">
-                                    <img src={podcast.imageUrl} alt="Podcast Image" width="150" className="rounded-xl"/>
+                                    <Image src={podcast.imageUrl} alt={podcast.name} width="150" height="150"/>
                                     <div className="card-body">
                                         <h2 className="card-title">{podcast.name}</h2>
                                         <p className="">

@@ -1,7 +1,7 @@
 'use client'
 import getPodcast from "@/app/api/getPodcast";
 import { useState, useEffect } from "react";
-
+import Image from "next/image";
 interface Podcast {
     uuid: string;
     name: string;
@@ -49,7 +49,7 @@ export default function Podcast({ params }: { params: { podcastName: string } })
                 <section>
                     <div className="flex justify-center">
                         <div className=" w-80">
-                            <img src={podcast?.imageUrl} width="full" height="50"/>
+                            <Image src={podcast?.imageUrl || "/default-image-url.jpg"} alt={podcast?.name || "No Name"} width={200} height={50} />
                         </div>
                     </div>
                     <div className="flex flex-col justify-center pt-4">
@@ -64,7 +64,7 @@ export default function Podcast({ params }: { params: { podcastName: string } })
             ) : 
             (
                 podcast?.episodes.map((episode) => (
-                    <section className="flex flex-col p-3 m-3 bg-slate-500 rounded-xl">
+                    <section className="flex flex-col p-3 m-3 bg-slate-500 rounded-xl" key={episode.uuid}>
                         <div>
                             <h2>{episode.name}</h2>
                         </div>
