@@ -114,13 +114,13 @@ export default function Player({audioUrl,name,isPlaying,setIsPlaying,setPlayerEn
     <>
       <section className="fixed bottom-0 left-0 right-0 bg-slate-900">
         <audio src={audioUrl} ref={audioRef} preload="metadata" autoPlay></audio>
-        <div className="flex flex-row justify-end">
-          <button className="btn btn-circle btn-sm m-1" onClick={handleClose}>
+        <div className="flex flex-row justify-between">
+          <div className="flex place-items-end pb-1 pl-2">
+            <h1 className="font-bold">{name}</h1>
+          </div>
+          <button className="btn btn-circle m-2 btn-xs btn-warning text-white" onClick={handleClose}>
             X
           </button>
-        </div>
-        <div className="p-2 m-1">
-          <h1>{name}</h1>
         </div>
         <div className="flex justify-center">
           <input
@@ -128,20 +128,20 @@ export default function Player({audioUrl,name,isPlaying,setIsPlaying,setPlayerEn
             min="0"
             value={currentTime}
             max={duration}
-            className="range"
+            className="range range-primary range-md ml-3 mr-3"
             onChange={handleSliderChange}
           />
         </div>
         <div className="flex flex-row justify-between">
-          <p className="ml-2">{formatDuration(currentTime)}</p>
-          <p className="mr-2">{formatDuration(duration)}</p>
+          <p className="ml-3 opacity-50">{formatDuration(currentTime)}</p>
+          <p className="mr-3 opacity-50">{formatDuration(duration)}</p>
         </div>
-        <div className="flex justify-center gap-4 mt-2">
+        <div className="flex justify-center">
           {isLoading ? (<section className="flex mb-3 mt-2 justify-center"><div className="loading loading-spinner bg-white loading-lg"></div></section>)
           : (
             <div onClick={togglePlayPause}>
               {isPlaying ? (
-                <button className="btn btn-circle p-3 bg-white mb-3 hover:bg-white">
+                <button className="btn btn-circle bg-white mb-3 hover:bg-white">
                   <svg fill="#000000" height="24" width="24" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 47.607 47.607">
                     <g>
                       <path d="M17.991,40.976c0,3.662-2.969,6.631-6.631,6.631l0,0c-3.662,0-6.631-2.969-6.631-6.631V6.631C4.729,2.969,7.698,0,11.36,0
@@ -152,7 +152,7 @@ export default function Player({audioUrl,name,isPlaying,setIsPlaying,setPlayerEn
                   </svg>
                 </button>
               ) : (
-                <button className="btn btn-circle bg-white p-3 mb-3 hover:bg-white">
+                <button className="btn btn-circle bg-white mb-3 hover:bg-white">
                   <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#000000">
                     <path d="M3 22V2l18 10-18 10z"/>
                   </svg>

@@ -6,6 +6,8 @@ interface Episode {
     description: string;
     audioUrl: string;
     videoUrl: string;
+    datePublished: string;
+
 }
 
 interface Podcast {
@@ -51,6 +53,7 @@ export default async function getPodcast(name: string): Promise<Podcast | null> 
                 description
                 audioUrl
                 videoUrl
+                datePublished
             }
         }
     }

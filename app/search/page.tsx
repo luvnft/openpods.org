@@ -44,12 +44,12 @@ export default function Search() {
         }
     };
     return (
-        <main className="min-h-screen">
+        <main className="min-h-screen bg-base-300">
             <section id="searchInput" className="p-4">
                 <div className="flex flex-col">
-                    <input className="input" placeholder="Search by Name" onChange={e => {setQuery(e.target.value)}}></input>
+                    <input className="input input-bordered bg-base-100 input-primary" placeholder="Search by Name" onChange={e => {setQuery(e.target.value)}}></input>
                     <div className="flex justify-end">
-                        <button className="btn mt-2 w-24" onClick={fetchPodcasts}>Search</button>
+                        <button className="btn mt-2 w-24 btn-info" onClick={fetchPodcasts}>Search</button>
                     </div>
                 </div>
             </section>
@@ -65,10 +65,10 @@ export default function Search() {
                     <div className="flex justify-center"><p>No results found</p></div>
                     ) : (
                         podcasts.map((podcast) => (
-                            <div className="card card-compact m-2" key={podcast.uuid}>
-                                <div className="card border-4 border-slate-600">
+                            <div className="card card-compact m-2 bg-base-200" key={podcast.uuid}>
+                                <div className="card border-4 card-bordered">
                                     <div className="w-64">
-                                        <img src={podcast.imageUrl} alt={podcast.name} width="full" height="150"/>
+                                        <img src={podcast.imageUrl} alt={podcast.name} className=" rounded-xl" width="full" height="150"/>
                                     </div>
                                     <div className="card-body">
                                         <h2 className="card-title">{podcast.name}</h2>
@@ -80,7 +80,7 @@ export default function Search() {
                                         <div className="card-actions justify-end">
                                             <Link
                                             href={"/podcast/" + podcast.name}
-                                            className="btn"
+                                            className="btn btn-info"
                                             >
                                             View Episodes
                                             </Link>
