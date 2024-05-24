@@ -49,7 +49,7 @@ export default function Podcast({ params }: { params: { podcastName: string } })
                 <section>
                     <div className="flex justify-center">
                         <div className=" w-80">
-                            <Image src={podcast?.imageUrl || "/default-image-url.jpg"} alt={podcast?.name || "No Name"} width={200} height={50} />
+                            <img src={podcast?.imageUrl || "/default-image-url.jpg"} alt={podcast?.name || "No Name"} width="full" height={50} />
                         </div>
                     </div>
                     <div className="flex flex-col justify-center pt-4">

@@ -67,7 +67,9 @@ export default function Search() {
                         podcasts.map((podcast) => (
                             <div className="card card-compact m-2" key={podcast.uuid}>
                                 <div className="card border-4 border-slate-600">
-                                    <Image src={podcast.imageUrl} alt={podcast.name} width="150" height="150"/>
+                                    <div className="w-64">
+                                        <img src={podcast.imageUrl} alt={podcast.name} width="full" height="150"/>
+                                    </div>
                                     <div className="card-body">
                                         <h2 className="card-title">{podcast.name}</h2>
                                         <p className="">
