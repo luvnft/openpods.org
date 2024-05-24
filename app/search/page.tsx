@@ -2,7 +2,7 @@
 import { useState } from "react";
 import searchPodcast from "../api/searchPodcast"
 import Link from "next/link";
-import Image from "next/image";
+import Player from "../components/Player";
 
 interface Podcast {
     uuid: string;

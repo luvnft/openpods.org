@@ -1,7 +1,8 @@
 'use client'
-import getPodcast from "@/app/api/getPodcast";
+import Player from "@/app/components/Player";
 import { useState, useEffect } from "react";
-import Image from "next/image";
+import getPodcast from "@/app/api/getPodcast";
+
 interface Podcast {
     uuid: string;
     name: string;
@@ -19,7 +20,15 @@ interface Podcast {
 export default function Podcast({ params }: { params: { podcastName: string } }) {
     const [loading, setLoading] = useState(false);
     const [podcast, setPodcast] = useState<Podcast | null>(null);
-    
+    const [playerEnabled, setPlayerEnabled] = useState(false); // State to manage player visibility
+    const [selectedEpisode, setSelectedEpisode] = useState<{ name: string, audioUrl: string } | null>(null);
+    const [isPlaying, setIsPlaying] = useState(false); // State to manage player playback
+
+    const startPlayer = (episode: { name: string, audioUrl: string }) => {
+        setPlayerEnabled(true);
+        setSelectedEpisode(episode);
+    };
+
     useEffect(() => {
         const fetchPodcast = async () => {
             setLoading(true);
@@ -39,6 +48,7 @@ export default function Podcast({ params }: { params: { podcastName: string } })
 
         fetchPodcast();
     }, [params.podcastName]);
+
     return (
         <main className="min-h-screen">
             {loading ? 
@@ -58,23 +68,17 @@ export default function Podcast({ params }: { params: { podcastName: string } })
                     </div>
                 </section>
             )}
-            {loading ? 
-            (
-                <></>
-            ) : 
-            (
-                podcast?.episodes.map((episode) => (
-                    <section className="flex flex-col p-3 m-3 bg-slate-500 rounded-xl" key={episode.uuid}>
-                        <div>
-                            <h2>{episode.name}</h2>
-                        </div>
-                        <div>
-                            {episode.videoUrl !== null ? (<video src={episode.videoUrl} controls></video>) : (<></>)}
-                            <audio src={episode.audioUrl} controls></audio>
-                        </div>
-                    </section>
-                ))
-            )}
+            {!loading && podcast?.episodes.map((episode) => (
+                <section className="flex flex-col p-3 m-3 bg-slate-500 rounded-xl" key={episode.uuid}>
+                    <div>
+                        <h2>{episode.name}</h2>
+                    </div>
+                    <div>
+                        <button className="btn" onClick={() => startPlayer({ name: episode.name, audioUrl: episode.audioUrl })}>Listen</button>
+                    </div>
+                </section>
+            ))}
+            {selectedEpisode && playerEnabled && <Player key={selectedEpisode.audioUrl} audioUrl={selectedEpisode.audioUrl} name={selectedEpisode.name} isPlaying={isPlaying} setIsPlaying={setIsPlaying} setPlayerEnabled={setPlayerEnabled} />}
         </main>
     );
 }
