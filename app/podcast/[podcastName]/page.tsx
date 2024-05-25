@@ -69,7 +69,7 @@ export default function Podcast({ params }: { params: { podcastName: string } })
     }
     
     return (
-        <main className="min-h-screen bg-base-300">
+        <main className="min-h-screen pt-24 bg-base-300">
             {loading ? 
             (
                 <div className="flex justify-center"><span className="loading loading-ring loading-lg"></span></div>

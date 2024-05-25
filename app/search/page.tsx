@@ -44,7 +44,7 @@ export default function Search() {
         }
     };
     return (
-        <main className="min-h-screen bg-base-300">
+        <main className="pt-24 min-h-screen bg-base-300">
             <section id="searchInput" className="p-4">
                 <div className="flex flex-col">
                     <input className="input input-bordered bg-base-100 input-primary" placeholder="Search by Name" onChange={e => {setQuery(e.target.value)}}></input>
