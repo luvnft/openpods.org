@@ -114,11 +114,11 @@ export default function Player({audioUrl,name,isPlaying,setIsPlaying,setPlayerEn
     <>
       <section className="fixed bottom-0 left-0 right-0 bg-slate-900">
         <audio src={audioUrl} ref={audioRef} preload="metadata" autoPlay></audio>
-        <div className="flex flex-row justify-between">
+        <div className="flex flex-row justify-between pt-3">
           <div className="flex place-items-end pb-1 pl-2">
             <h1 className="font-bold">{name}</h1>
           </div>
-          <button className="btn btn-circle m-2 btn-xs btn-warning text-white" onClick={handleClose}>
+          <button className="btn btn-circle ml-2 mr-2 btn-xs btn-warning text-white" onClick={handleClose}>
             X
           </button>
         </div>

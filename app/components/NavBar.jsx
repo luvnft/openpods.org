@@ -7,7 +7,7 @@ export default function NavBar() {
         </div>
         <div className="flex-none">
             <ul className="menu menu-horizontal px-1 gap-3">
-                <li><Link href="/search" className="btn bg-primary">Listen</Link></li>
+                <li><Link href="/search" className="btn bg-primary">Search</Link></li>
                 <li><Link className="btn bg-secondary" href="https://github.com/haydenzeller/openpods.org/" target="_blank">Contribute</Link></li>
             </ul>
         </div>

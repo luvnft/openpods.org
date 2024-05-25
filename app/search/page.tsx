@@ -49,7 +49,7 @@ export default function Search() {
                 <div className="flex flex-col">
                     <input className="input input-bordered bg-base-100 input-primary" placeholder="Search by Name" onChange={e => {setQuery(e.target.value)}}></input>
                     <div className="flex justify-end">
-                        <button className="btn mt-2 w-24 btn-info" onClick={fetchPodcasts}>Search</button>
+                        <button className="btn mt-2 w-24 btn-info" onClick={fetchPodcasts}>Submit</button>
                     </div>
                 </div>
             </section>
