@@ -19,6 +19,7 @@ const config: Config = {
     themes: [
       {
         mytheme: {
+        
         "primary": "#6440ff",
                 
         "primary-content": "#daddff",

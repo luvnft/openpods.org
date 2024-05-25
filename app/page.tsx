@@ -12,7 +12,7 @@ export default function Home() {
             <h2 className="py-6 text-2xl font-bold">
               No accounts, No subscriptions, No ads.
             </h2>
-            <Link href="/topcharts" className="btn btn-primary">View Top Charts</Link>
+            <Link href="/topcharts" className="btn bg-primary hover:bg-base-100">View Top Charts</Link>
           </div>
         </div>
       </div>

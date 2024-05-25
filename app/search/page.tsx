@@ -48,7 +48,7 @@ export default function Search() {
                 <div className="flex flex-col">
                     <input className="input input-bordered bg-base-100 input-primary" placeholder="Search by Name" onChange={e => {setQuery(e.target.value)}}></input>
                     <div className="flex justify-end">
-                        <button className="btn mt-2 w-24 btn-info" onClick={fetchPodcasts}>Submit</button>
+                        <button className="btn mt-2 w-24 bg-info text-base-100 hover:text-white hover:bg-base-100" onClick={fetchPodcasts}>Submit</button>
                     </div>
                 </div>
             </section>
@@ -79,7 +79,7 @@ export default function Search() {
                                         <div className="card-actions justify-end">
                                             <Link
                                             href={"/podcast/" + podcast.name}
-                                            className="btn btn-info"
+                                            className="btn bg-info text-base-100 hover:text-white hover:bg-base-100"
                                             >
                                             View Episodes
                                             </Link>
