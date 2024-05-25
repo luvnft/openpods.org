@@ -1,12 +1,10 @@
-
-import { useEffect } from 'react';
-import { useRouter } from 'next/router';
 import Link from 'next/link';
+import NavBar from './components/NavBar';
 
 export default function Home() {
 
   return (
-    <main className="min-h-screen">
+    <main>
       <div className="hero min-h-screen bg-base-300">
         <div className="hero-content text-center">
           <div className="max-w-md">

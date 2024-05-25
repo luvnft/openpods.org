@@ -36,7 +36,6 @@ export default function TopCharts() {
                <div className="card border-4 card-bordered">
                    <div className="w-64 flex justify-between">
                        <img src={podcast.imageUrl} alt={podcast.name} className=" rounded-xl" width="full" height="150"/>
-                       <h1>1</h1>
                    </div>
                    <div className="card-body">
                        <h2 className="card-title">{podcast.name}</h2>

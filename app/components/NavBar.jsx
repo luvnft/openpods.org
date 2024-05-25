@@ -1,7 +1,7 @@
 import Link from "next/link"
 export default function NavBar() {
     return (
-    <div className="navbar bg-base-100">
+    <div className="navbar bg-base-100 fixed z-10 shadow-xl">
         <div className="flex-1">
             <Link href="/" className="btn btn-ghost text-xl">OpenPods.org</Link>
         </div>
