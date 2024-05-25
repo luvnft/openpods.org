@@ -2,7 +2,6 @@
 import { useState } from "react";
 import searchPodcast from "../api/searchPodcast"
 import Link from "next/link";
-import Player from "../components/Player";
 
 interface Podcast {
     uuid: string;
@@ -32,7 +31,7 @@ export default function Search() {
                     uuid: podcast.uuid,
                     name: podcast.name,
                     rssUrl: podcast.rssUrl,
-                    imageUrl: podcast.imageUrl || 'defaultImageUrl', // Provide a default value
+                    imageUrl: podcast.imageUrl || "@/public/imageNotFound.jpg", // Provide a default value
                     description: podcast.description || 'No description available' // Provide a default value
                 }));
                 setPodcasts(podcastsData);

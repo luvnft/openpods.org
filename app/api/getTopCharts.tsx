@@ -1,6 +1,5 @@
 import { GraphQLClient, gql } from 'graphql-request';
 
-const endpoint = "https://api.taddy.org";
 const query = gql`
   query getTopChartsByCountry {
     getTopChartsByCountry(taddyType:PODCASTSERIES, country:UNITED_STATES_OF_AMERICA){
@@ -32,13 +31,21 @@ interface Podcast {
 }
 
 export default async function getTopCharts(): Promise<Podcast[]> {
+  const endpoint = process.env.NEXT_PUBLIC_TADDY_URL;
+  if (!endpoint) {
+    throw new Error("TADDY_URL environment variable is not set");
+  }
+  const headers: Record<string, string | undefined> = {
+    "Content-Type": "application/json",
+    "X-USER-ID": process.env.NEXT_PUBLIC_TADDY_USER_ID,
+    "X-API-KEY": process.env.NEXT_PUBLIC_TADDY_API_KEY
+  };
+  
   const graphQlClient = new GraphQLClient(endpoint, {
-    headers: {
-      "Content-Type": "application/json",
-      "X-USER-ID": "1455",
-      "X-API-KEY": "eeec2320e07f826675d98bd8a9e9b66f67fe3b1793087c9e8a3f55489068937d0e094e5d511236d4cdac62312faa04461a"
-    }
+    headers: headers as HeadersInit, // Explicitly cast headers to HeadersInit
   });
+  
+  
 
   try {
     const data: { getTopChartsByCountry: { podcastSeries: Podcast[] } } = await graphQlClient.request(query);
